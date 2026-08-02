@@ -3,7 +3,9 @@ import { Homepage } from "./Pages/Homepage"
 function App() {
 
   return (
-    <Homepage />
+    <div className="font-raleway">
+      <Homepage />
+    </div>
   )
 }
 

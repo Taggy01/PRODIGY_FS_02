@@ -19,7 +19,7 @@ export function Homepage() {
                 ) : (
                     <div>
                         <Navbar />
-                        <MainPage key="main" />
+                        <MainPage key="main" employees={[]} onEdit={() => {}} onDelete={() => {}} />
                     </div>
                 )}
             </AnimatePresence>
