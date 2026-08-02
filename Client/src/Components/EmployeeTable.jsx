@@ -17,10 +17,10 @@ export function EmployeeTable({ employees, onEdit, onDelete }) {
                             <td>{employee.position}</td>
                             <td>{employee.department}</td>
                             <td>
-                                <button className="btn btn-primary btn-sm mr-2" onClick={() => onEdit(employee)}>
+                                <button className="btn btn-soft btn-secondary btn-sm mr-5" onClick={() => onEdit(employee)}>
                                     Edit
                                 </button>
-                                <button className="btn btn-danger btn-sm" onClick={() => onDelete(employee.id)}>
+                                <button className="btn btn-soft btn-error btn-sm" onClick={() => onDelete(employee.id)}>
                                     Delete
                                 </button>
                             </td>

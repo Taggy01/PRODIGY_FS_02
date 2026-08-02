@@ -6,6 +6,11 @@ import { AnimatePresence } from "framer-motion";
 
 export function Homepage() {
     const [start, setStart] = useState(false);
+    const employees = [
+        { id: 1, name: "John Doe", position: "Software Engineer", department: "Engineering" },
+        { id: 2, name: "Jane Smith", position: "Product Manager", department: "Product" },
+        { id: 3, name: "Alice Johnson", position: "UX Designer", department: "Design" },
+    ];
 
     return (
         <>
@@ -19,7 +24,7 @@ export function Homepage() {
                 ) : (
                     <div>
                         <Navbar />
-                        <MainPage key="main" employees={[]} onEdit={() => {}} onDelete={() => {}} />
+                        <MainPage key="main" employees={employees} onEdit={() => {}} onDelete={() => {}} />
                     </div>
                 )}
             </AnimatePresence>
