@@ -9,15 +9,15 @@ export default function AddEmployee() {
                 <form className="grid *:grid-cols-1 md:grid-cols-2 gap-5 mt-10 mx-10">
                     <div>
                         <label className="block text-sm font-medium">Name</label>
-                        <input type="text" className="mt-2 block w-100 p-5 rounded-lg border border-base-content/30 h-10 sm:text-sm" />
+                        <input type="text" className="input w-3/4 mt-1.5 rounded-2xl" />
                     </div>
                     <div>
                         <label className="block text-sm font-medium">Email</label>
-                        <input type="email" className="mt-2 block w-100 p-5 rounded-lg border border-base-content/30 h-10 sm:text-sm" />
+                        <input type="email" className="input w-3/4 mt-1.5 rounded-2xl" />
                     </div>
                     <div>
                         <label className="block text-sm font-medium">Phone</label>
-                        <input type="tel" className="mt-2 block w-100 p-5 rounded-lg border border-base-content/30 h-10 sm:text-sm" />
+                        <input type="tel" className="input w-3/4 mt-1.5 rounded-2xl" />
                     </div>
                     <div>
                         <label className="block text-sm font-medium">Gender</label>
@@ -32,19 +32,19 @@ export default function AddEmployee() {
                     </div>
                     <div>
                         <label className="block text-sm font-medium">Department</label>
-                        <input type="text" className="mt-2 block w-100 p-5 rounded-lg border border-base-content/30 h-10 sm:text-sm" />
+                        <input type="text" className="input w-3/4 mt-1.5 rounded-2xl" />
                     </div>
                     <div>
                         <label className="block text-sm font-medium">Position</label>
-                        <input type="text" className="mt-2 block w-100 p-5 rounded-lg border border-base-content/30 h-10 sm:text-sm" />
+                        <input type="text" className="input w-3/4 mt-1.5 rounded-2xl" />
                     </div>
                     <div>
                         <label className="block text-sm font-medium">Salary</label>
-                        <input type="number" className="mt-2 block w-100 p-5 rounded-lg border border-base-content/30 h-10 sm:text-sm" />
+                        <input type="number" className="input w-3/4 mt-1.5 rounded-2xl" />
                     </div>
                     <div>
                         <label className="block text-sm font-medium">Joining Date</label>
-                        <input type="date" className="mt-2 block w-100 p-5 rounded-lg border border-base-content/30 h-10 sm:text-sm" />
+                        <input type="date" className="input w-3/4 mt-1.5 rounded-2xl" />
                     </div>
                     <div className="md:col-span-2">
                         <button type="submit" className="btn btn-soft btn-lg btn-primary mt-10">Add Employee</button>

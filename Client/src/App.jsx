@@ -1,6 +1,7 @@
 import { Homepage } from "./Pages/Homepage";
 import { Routes, Route } from "react-router-dom";
 import AddEmployee from "./Pages/AddEmployee";
+import Login from "./Pages/Login";
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/add" element={<AddEmployee />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   )
