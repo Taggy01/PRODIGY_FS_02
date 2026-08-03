@@ -4,13 +4,15 @@ import { MainPage } from "../Components/MainPage";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
-export function Homepage() {
-    const [start, setStart] = useState(false);
-    const employees = [
-        { id: 1, name: "John Doe", position: "Software Engineer", department: "Engineering" },
-        { id: 2, name: "Jane Smith", position: "Product Manager", department: "Product" },
-        { id: 3, name: "Alice Johnson", position: "UX Designer", department: "Design" },
-    ];
+export function Homepage({ employees }) {
+    const [start, setStart] = useState(() => {
+        return sessionStorage.getItem("hasVisited") === "true";
+    });
+
+    const handleStart = () => {
+        setStart(true);
+        sessionStorage.setItem("hasVisited", "true");
+    }
 
     return (
         <>
@@ -19,12 +21,12 @@ export function Homepage() {
 
                     <Greetings
                         key="greetings"
-                        onStart={() => setStart(true)}
+                        onStart={handleStart}
                     />
                 ) : (
                     <div>
                         <Navbar />
-                        <MainPage key="main" employees={employees} onEdit={() => {}} onDelete={() => {}} />
+                        <MainPage key="main" employees={employees} />
                     </div>
                 )}
             </AnimatePresence>

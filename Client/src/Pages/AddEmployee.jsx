@@ -1,6 +1,8 @@
 import { Navbar } from "../Components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export default function AddEmployee() {
+    const navigate = useNavigate();
     return (
         <div>
             <Navbar />
@@ -47,7 +49,9 @@ export default function AddEmployee() {
                         <input type="date" className="input w-3/4 mt-1.5 rounded-2xl" />
                     </div>
                     <div className="md:col-span-2">
-                        <button type="submit" className="btn btn-soft btn-lg btn-primary mt-10">Add Employee</button>
+                        <button type="submit" className="btn btn-soft btn-lg btn-primary mt-10" onClick={() => navigate('/')}>
+                            Add Employee
+                        </button>
                     </div>
                 </form>
             </div>
