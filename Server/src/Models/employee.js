@@ -9,11 +9,14 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
+        lowercase: true,
+        trim: true
     },
     phone: {
         type: Number,
         required: true,
-        unique: true
+        unique: true,
+        match: /^\d{10}$/
     },
     gender: {
         type: String,
@@ -36,6 +39,6 @@ const employeeSchema = new mongoose.Schema({
         type: Number,
         required: true
     }
-});
+},{timestamps:true});
 
 const Employee = mongoose.model("Employee", employeeSchema)
