@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 const employeeSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        trim:true
     },
     email: {
         type: String,
@@ -13,9 +14,10 @@ const employeeSchema = new mongoose.Schema({
         trim: true
     },
     phone: {
-        type: Number,
+        type: String,
         required: true,
         unique: true,
+        trim:true,
         match: /^\d{10}$/
     },
     gender: {
@@ -25,20 +27,25 @@ const employeeSchema = new mongoose.Schema({
     },
     department: {
         type: String,
-        required: true
+        required: true,
+        trim:true
     },
     position: {
         type: String,
-        required: true
+        required: true,
+        trim:true
     },
     salary: {
         type: Number,
-        required: true
+        required: true,
+        min:1
     },
     joiningDate: {
-        type: Number,
+        type: Date,
         required: true
     }
 },{timestamps:true});
 
 const Employee = mongoose.model("Employee", employeeSchema)
+
+export default Employee;
