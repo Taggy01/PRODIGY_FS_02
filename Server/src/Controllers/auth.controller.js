@@ -19,9 +19,25 @@ const generateToken = (userid, res) => {
         httpOnly: true,
         sameSite: "lax",
         secure: process.env.NODE_ENV === "production",
-        path:'/'
+        path: '/'
     })
 }
+
+export const getMe = async (req, res) => {
+    try {
+        return res.status(200).json({
+            success: true,
+            user: req.user
+        });
+    } catch (error) {
+        console.error("Get Me Error:", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error in Get Me Controller"
+        });
+    }
+};
 
 
 export const login = async (req, res) => {
@@ -71,7 +87,7 @@ export const logout = (req, res) => {
         httpOnly: true,
         sameSite: "lax",
         secure: process.env.NODE_ENV === "production",
-        path:'/'
+        path: '/'
     });
 
     return res.status(200).json({

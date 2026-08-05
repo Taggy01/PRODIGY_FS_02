@@ -1,15 +1,14 @@
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
-import User from "./Models/user.js"; // Adjust the path if needed
+import mongoose from "mongoose";
+import User from "../Models/user.js";
+import connectDB from "../Db/db.js";
 
 dotenv.config();
 
 const seedAdmin = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_DB_URL);
-
-        console.log("MongoDB Connected");
+        await connectDB();
 
         const AdminName = process.env.ADMIN_NAME || "Admin";
         const AdminEmail = process.env.ADMIN_EMAIL || "Admin.ems@ems.com"
@@ -27,7 +26,7 @@ const seedAdmin = async () => {
         const hashedPassword = await bcrypt.hash(AdminPassword, 10);
 
         const admin = await User.create({
-            name: AdminName.trim(),
+            username: AdminName.trim(),
             email: AdminEmail.trim().toLowerCase(),
             password: hashedPassword,
             role: "admin"
@@ -36,13 +35,11 @@ const seedAdmin = async () => {
         console.log("Admin created successfully.");
         console.log(admin);
 
-        await mongoose.connection.close();
-        process.exit(0);
-
     } catch (error) {
         console.error("Seed Error:", error);
+    } finally{
         await mongoose.connection.close();
-        process.exit(1);
+        process.exit(0);
     }
 };
 
