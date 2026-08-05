@@ -14,6 +14,11 @@ export const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         select: false
+    },
+    role: {
+        type: String,
+        enum: ["admin", "employee"],
+        default: "employee"
     }
 });
 
