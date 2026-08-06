@@ -25,13 +25,20 @@ export const addEmployee = async (req, res) => {
             message: "Fields cannot be empty."
         });
 
-        const validateEmail = await validate(normalizedEmail);
+        // This is For Real Life Email Validator
+        // const validateEmail = await validate(normalizedEmail);
 
-        if (!validateEmail.valid) return res.status(400).json({
-            success: false,
-            message: "Email is Not Valid",
-            reason: validateEmail.reason
-        });
+        // if (!validateEmail.valid) return res.status(400).json({
+        //     success: false,
+        //     message: "Email is Not Valid",
+        //     reason: validateEmail.reason
+        // });
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
+            return res.status(400).json({
+                message: "Invalid Email",
+            });
+        }
 
         const existingEmail = await Employee.findOne({ email: normalizedEmail });
 

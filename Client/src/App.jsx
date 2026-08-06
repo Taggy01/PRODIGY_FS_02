@@ -4,7 +4,8 @@ import AddEmployee from "./Pages/AddEmployee";
 import Login from "./Pages/Login";
 import ModifyEmployee from "./Pages/ModifyEmployee";
 import { Toaster } from "react-hot-toast";
-import ProtectRoute from "./ProtectRoute/ProtectRoute";
+import ProtectRoute from "./Routes/ProtectRoute";
+import PublicRoute from "./Routes/PublicRoute";
 
 
 function App() {
@@ -35,9 +36,9 @@ function App() {
           </ProtectRoute>} />
 
         <Route path="/login" element={
-          <ProtectRoute>
+          <PublicRoute>
             <Login />
-          </ProtectRoute>} />
+          </PublicRoute>} />
 
       </Routes>
     </div>
