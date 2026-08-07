@@ -4,7 +4,7 @@ import api from "../Utils/api.js";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-export default function AddEmployee() {
+export default function AddEmployee({fetchEmployees}) {
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
     const [phone,setPhone] = useState("");
@@ -31,6 +31,7 @@ export default function AddEmployee() {
 
             console.log(respond);
             toast.success("Added successful!");
+            await fetchEmployees();
             navigate("/", { replace: true });
         } catch (error) {
             console.log(error);

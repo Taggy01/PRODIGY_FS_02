@@ -26,6 +26,7 @@ export const addEmployee = async (req, res) => {
         });
 
         // This is For Real Life Email Validator
+
         // const validateEmail = await validate(normalizedEmail);
 
         // if (!validateEmail.valid) return res.status(400).json({
@@ -157,10 +158,6 @@ export const UpdateEmployee = async (req, res) => {
         const { id } = req.params;
 
 
-        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json({
-            success: false,
-            message: "Invalid Employee ID"
-        });
 
         const employee = await Employee.findById(id);
 
@@ -210,13 +207,22 @@ export const UpdateEmployee = async (req, res) => {
                 });
             }
 
-            const validateEmail = await validate(normalizedEmail);
+            // This for Real Life Email Validator
 
-            if (!validateEmail.valid) {
+            // const validateEmail = await validate(normalizedEmail);
+
+            // if (!validateEmail.valid) {
+            //     return res.status(400).json({
+            //         success: false,
+            //         message: "Email is not valid.",
+            //         reason: validateEmail.reason
+            //     });
+            // }
+
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
                 return res.status(400).json({
-                    success: false,
-                    message: "Email is not valid.",
-                    reason: validateEmail.reason
+                    message: "Invalid Email",
                 });
             }
 

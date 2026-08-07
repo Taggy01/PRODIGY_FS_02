@@ -1,7 +1,22 @@
 import { EmployeeTable } from "./EmployeeTable";
 import { useNavigate } from "react-router-dom";
 
-export function MainPage({ employees }) {
+export function MainPage({ employees, fetchEmployees }) {
+    const totalEmployees = employees.length;
+
+    const totalDepartments = new Set(
+        employees.map(emp => emp.department)
+    ).size;
+
+    const totalSalary = employees.reduce(
+        (sum, emp) => sum + Number(emp.salary),
+        0
+    );
+
+    const averageSalary = employees.length
+        ? Math.round(totalSalary / employees.length)
+        : 0;
+
     const navigate = useNavigate();
     return (
         <div className="mx-10 mt-25">
@@ -16,7 +31,7 @@ export function MainPage({ employees }) {
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current" strokeLinecap="round" strokeLinejoin="round" strokeWidth='2'><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                         </div>
                         <div className="stat-title">Total Employees</div>
-                        <div className="stat-value text-primary">31K</div>
+                        <div className="stat-value text-primary">{totalEmployees}</div>
                     </div>
                 </div>
                 <div className="stats shadow w-full border border-base-content/15">
@@ -25,7 +40,18 @@ export function MainPage({ employees }) {
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-6 0h6"></path></svg>
                         </div>
                         <div className="stat-title">Total Departments</div>
-                        <div className="stat-value text-secondary">4</div>
+                        <div className="stat-value text-secondary">{totalDepartments}</div>
+                    </div>
+                </div>
+                <div className="stats shadow w-full border border-base-content/15">
+                    <div className="stat">
+                        <div className="stat-figure text-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                                <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2z" />
+                            </svg>
+                        </div>
+                        <div className="stat-title">Average Salary</div>
+                        <div className="stat-value text-secondary">{averageSalary}</div>
                     </div>
                 </div>
             </div>
@@ -37,7 +63,7 @@ export function MainPage({ employees }) {
                     </button>
                 </div>
                 {employees.length > 0 ? (
-                    <EmployeeTable employees={employees} />
+                    <EmployeeTable employees={employees} fetchEmployees={fetchEmployees} />
                 ) : (
                     <div className="flex justify-center my-10">
                         <p className="text-lg">No employees found.</p>
